@@ -1,0 +1,10 @@
+FROM node:11
+
+ENV APP_HOME /stream
+ARG FIREBASE_API_KEY
+ARG FIREBASE_DOMAIN
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+ADD package*.json $APP_HOME/
+RUN npm install --quiet
+COPY . $APP_HOME

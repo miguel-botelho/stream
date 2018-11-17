@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        - FIREBASE_API_KEY=${FIREBASE_API_KEY}
+        - FIREBASE_DOMAIN=${FIREBASE_DOMAIN}
+    image: miguelbotelho/stream-io
+    command: npm start
+    volumes:
+      - .:/stream
+      - /stream/node_modules
+    environment:
+      - FIREBASE_API_KEY=${FIREBASE_API_KEY}
+      - FIREBASE_DOMAIN=${FIREBASE_DOMAIN}
+      - PORT=8080
+    ports:
+      - "8080:8080"
